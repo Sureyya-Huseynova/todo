@@ -6,31 +6,86 @@
 }
 
 body {
-  background-color: #02a110;
+  background-image: url(https://cdn1.vectorstock.com/i/1000x1000/96/55/bacground-with-carbon-texture-geometric-elements-vector-1649655.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
 }
 
 html {
   font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.todo-app {
+  width: 80%;
+  margin: 3rem auto;
+  height: 45rem;
+  background-color: rgba(0, 0, 0, 0.616);
 }
 
 .to-do-list-container {
-  margin: 5rem auto;
-  width: 40%;
-  min-height: 30rem;
-  background-color: rgba(226, 225, 225, 0.76);
+  min-height: 50rem;
 }
 
-.add-to-do {
+header {
+  border: olive 1px solid;
+  width: 60%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.date {
+  border: tomato 1px solid;
+}
+
+.enter-completed-todo-module {
+  border: springgreen 1px solid;
+  background-color: #f86909;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+
+.todo-input-area {
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  border: 3px red solid;
+}
+
+.add-todo {
+  font-weight: 600;
   font-size: 3rem;
-  color: white;
+  color: #ff0d0d;
   cursor: pointer;
+  height: 3rem;
 }
 
-.delete-to-do {
+.write-todo-input {
+  outline: none;
+  border: none;
+  width: 92%;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+
+.delete-to-do, .delete-to-do-complete {
   color: red;
-  display: none;
-  font-size: 3rem;
+  font-size: 3.5rem;
   cursor: pointer;
+}
+
+.delete-to-do-complete {
+  color: #1900ff;
 }
 
 .save-to-do {
@@ -39,11 +94,13 @@ html {
   cursor: pointer;
 }
 
-.complete-module {
-  width: 300px;
-  height: 300px;
-  background-color: peru;
+.completed-todo-list-module {
+  width: 100%;
+  min-height: 30rem;
+  background-color: #50cd3f;
   display: none;
+  position: absolute;
+  top: 0;
 }
 
 .to-do-list {

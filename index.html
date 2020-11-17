@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Style/style.css">
     <title>ToDoList</title>
 </head>
+
 <body>
 
-    <div class="complete-module">
-        <div class="modal-content">
-            <span class="close-complete">&times;</span>
-            <span class="delete-to-do"> <i class="fas fa-trash-alt "></i> </span> 
-            
+    <div class="todo-app">
+        <div class="to-do-list-container">
+            <header>
+                <span class="date">Date</span>
+                <span class="enter-completed-todo-module">Complete to do</span>
+                <span class="delete-todo"> <i class="fas fa-trash-alt "></i> </span>
+            </header>
+            <div class="todo-input-area">
+                <i class="fas fa-plus-square add-todo"></i>
+                <input type="text" class="write-todo-input">
+            </div>
         </div>
-    </div>
 
-    <div class="to-do-list-container"> 77777777777
-        <button class="complete-item">Complete to do</button>
-        <div class="to-do-input-area">
-            <i class="fas fa-plus-square add-to-do"></i>    
-            <input type="text" class="to-do-input">
+        <div class="completed-todo-list-module">
+            <span class="close-completed-module">&times;</span>
+            <span class="delete-todo-for-completed-module"> <i class="fas fa-trash-alt "></i> </span>
         </div>
     </div>
-    
 
 
 
@@ -31,4 +35,5 @@
     <script src="./Script/main.js"></script>
 
 </body>
+
 </html>

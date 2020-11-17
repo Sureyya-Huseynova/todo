@@ -1,79 +1,84 @@
 const toDoListContainer = document.querySelector(".to-do-list-container");
-const addToDo = toDoListContainer.querySelector(".add-to-do");
-const toDoInput = toDoListContainer.querySelector(".to-do-input");
-const deleteItem = document.querySelector(".delete-to-do");
-const completeItem = toDoListContainer.querySelector(".complete-item");
-const completeModule = document.querySelector(".complete-module");
-const closeComplete = document.querySelector(".close-complete");
-addToDo.addEventListener("click", addToDoButton);
-deleteItem.addEventListener("click", deleteItemButton)
-completeItem.addEventListener("click", completeItemButton);
-closeComplete.addEventListener("click", closeCompleteButton);
+const enterCompletedTodoModule = toDoListContainer.querySelector(".enter-completed-todo-module");
+const addToDo = toDoListContainer.querySelector(".add-todo");
+const deleteToDo = toDoListContainer.querySelector(".delete-todo");
+const writeToDoInput = toDoListContainer.querySelector(".write-todo-input");
 
-function addToDoButton(){
+// module  tages
+const completedToDoListModule = document.querySelector(".completed-todo-list-module");
+const closeComplete = document.querySelector(".close-completed-module");
+const deleteToDoForCompletedModule = document.querySelector(".delete-todo-for-completed-module");
+
+// eventes for todo-list-container
+addToDo.addEventListener("click", isAddToDo);
+deleteToDo.addEventListener("click", isDeleteToDo);
+enterCompletedTodoModule.addEventListener("click", isEnterCompletedTodoModule);
+
+// events for comleceted-module
+closeComplete.addEventListener("click", isCloseComplete);
+deleteToDoForCompletedModule.addEventListener("click", isDeleteToDoForCompletedModule);
+
+let arr =[];
+function isAddToDo() {
+    let singleToDoArea = document.createElement('div') // to do input delete
+    let toDoInput = document.createElement('input'); // todo yaz 
+    let selectTransferToDo = document.createElement("input");// select kocur
+    let selectDeleteToDo = document.createElement("input"); // select sil
+
+    singleToDoArea.className = "single-todo-area";
+    toDoInput.className = "input-todo"
+    selectTransferToDo.type = "checkbox";
+    selectDeleteToDo.type = "checkbox";
+    selectDeleteToDo.className = "sel";
+
+    toDoInput.value = writeToDoInput.value;
+    writeToDoInput.value = "";
+    singleToDoArea.appendChild(selectTransferToDo);
+    singleToDoArea.appendChild(toDoInput);
+    singleToDoArea.appendChild(selectDeleteToDo);
+    toDoListContainer.appendChild(singleToDoArea);
+
+    toDoInput.addEventListener("click", EditToDo); // save edit edende
+    selectTransferToDo.addEventListener("click", isSelectTransferToDo); // 
+    selectDeleteToDo.addEventListener("click", isSelectDeleteToDo)
+}
+
+function EditToDo(e) {   // save edit edende
+    let saveEdit = document.createElement('i');
+    saveEdit.className = "fas fa-download save-todo";
+    e.target.parentElement.appendChild(saveEdit);
+    saveEdit.addEventListener("click", saveEditValue);
+}
+function saveEditValue(e) { e.target.style.display = "none" };
+
+// transfer to do  to completed module
+function isSelectTransferToDo(e) {
+    e.target.parentElement.remove();
+    completedToDoListModule.appendChild(e.target.parentElement);
  
-    console.log(0);
-    let toDoItem = document.createElement('div')
-    let inputToDo = document.createElement('input');
-    let inputRadio = document.createElement("input");
-   
-
-    toDoItem.className = "to-do-list";
-    inputToDo.className = "input-to-do"
-    inputRadio.type = "checkbox";
-    inputRadio.className = "radio-button";
-    inputToDo.value = toDoInput.value;
-    toDoInput.value = "";
-    toDoItem.appendChild(inputRadio);
-    toDoItem.appendChild(inputToDo);
-    toDoListContainer.appendChild(toDoItem);
-    inputToDo.addEventListener("click", saveToDoItem);
-    inputRadio.addEventListener("click", selectToDoItem)
-  
 }
+function isEnterCompletedTodoModule() { completedToDoListModule.style.display = "block"; }
+function isCloseComplete() { completedToDoListModule.style.display = "none"; }
 
-function saveToDoItem(e){
-    let saveToDo = document.createElement('i');
-    saveToDo.className = "fas fa-download save-to-do";
-    e.target.parentElement.appendChild(saveToDo);
-    saveToDo.addEventListener("click", saveToDoInputValue);
+// isSelectDeleteToDo
+
+function isSelectDeleteToDo(e){ //sil
+   arr.push(e.target);
 }
-
-function saveToDoInputValue(e){
-    e.target.style.display="none";
-}
-
-let arr = [];
-
-function selectToDoItem(e){
-  console.log(e.target);
-  arr.push(e.target);
-  console.log(arr);
-  console.log(e.target.parentElement)
-
-  if(arr.length >0 ){
-    deleteItem.style.display = "block";
-  }
- 
-}
-
-
-function deleteItemButton(){
-    for(i=0; i< arr.length; i++){
-        console.log(arr[i]);
-        if(arr[i].checked){
-            arr[i].parentElement.remove();
-        }
+// delete todo
+function isDeleteToDo(){
+    let select = toDoListContainer.querySelector(".sel");
+    if(select.checked){
+        select.parentElement.remove();
     }
 }
+// module
 
-function completeItemButton(){completeModule.style.display = "block";}
-function closeCompleteButton(){completeModule.style.display = "none";}
-
-
-
-
-
-
-
-
+function isDeleteToDoForCompletedModule(){
+    let sel = completedToDoListModule.querySelector(".sel");
+    console.log(completedToDoListModule)
+    if(sel.checked){
+        sel.parentElement.remove();
+    }
+   
+}
